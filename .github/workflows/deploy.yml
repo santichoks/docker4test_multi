@@ -13,15 +13,15 @@ jobs:
       - run: docker build -t santichoks/react-test -f ./client/Dockerfile.dev ./client
       - run: docker run -e CI=true santichoks/react-test npm test
  
-      - run: docker build -t santichoks/multi-client-10-14 ./client
-      - run: docker build -t santichoks/multi-nginx-10-14 ./nginx
-      - run: docker build -t santichoks/multi-server-10-14 ./server
-      - run: docker build -t santichoks/multi-worker-10-14 ./worker
+      - run: docker build -t santichoks/multi-client ./client
+      - run: docker build -t santichoks/multi-nginx ./nginx
+      - run: docker build -t santichoks/multi-server ./server
+      - run: docker build -t santichoks/multi-worker ./worker
  
-      - run: docker push santichoks/multi-client-10-14
-      - run: docker push santichoks/multi-nginx-10-14
-      - run: docker push santichoks/multi-server-10-14
-      - run: docker push santichoks/multi-worker-10-14
+      - run: docker push santichoks/multi-client
+      - run: docker push santichoks/multi-nginx
+      - run: docker push santichoks/multi-server
+      - run: docker push santichoks/multi-worker
  
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
@@ -31,8 +31,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: docker4test_multi
-          environment_name: Docker4testmulti-env
+          application_name: santichoks
+          environment_name: Santichoks-env
           existing_bucket_name: elasticbeanstalk-us-east-1-198842442229
           region: us-east-1
           version_label: ${{ github.sha }}
