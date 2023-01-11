@@ -32,7 +32,7 @@ jobs:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: santichoks
-          environment_name: Santichoks-env
+          environment_name: Santichoks-env-1
           existing_bucket_name: elasticbeanstalk-us-east-1-198842442229
           region: us-east-1
           version_label: ${{ github.sha }}
