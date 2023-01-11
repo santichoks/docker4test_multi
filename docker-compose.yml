@@ -1,11 +1,11 @@
 version: "3"
 services:
   client:
-    image: "santichoks/multi-client-10-14"
+    image: "santichoks/multi-client"
     mem_limit: 128m
     hostname: client
   server:
-    image: "santichoks/multi-server-10-14"
+    image: "santichoks/multi-server"
     mem_limit: 128m
     hostname: api
     environment:
@@ -17,14 +17,14 @@ services:
       - PGPASSWORD=$PGPASSWORD
       - PGPORT=$PGPORT
   worker:
-    image: "santichoks/multi-worker-10-14"
+    image: "santichoks/multi-worker"
     mem_limit: 128m
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
-    image: "santichoks/multi-nginx-10-14"
+    image: "santichoks/multi-nginx"
     mem_limit: 128m
     hostname: nginx
     ports:
